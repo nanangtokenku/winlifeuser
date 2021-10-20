@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:winlife/constant/color.dart';
 import 'package:winlife/controller/main_controller.dart';
 import 'package:winlife/data/model/category_model.dart';
@@ -351,7 +352,7 @@ class _FrameHistoryState extends State<FrameHistory> {
                             height: 10,
                           ),
                           Text(
-                            "",
+                            "Point : 200",
                             textAlign: TextAlign.end,
                             overflow: TextOverflow.fade,
                             style: TextStyle(
@@ -359,6 +360,23 @@ class _FrameHistoryState extends State<FrameHistory> {
                                 color: Colors.black87,
                                 fontSize: 8),
                           ),
+                          RatingBar.builder(
+                            initialRating: 3.5,
+                            minRating: 1,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemCount: 5,
+                            itemSize: 15,
+                            itemPadding: EdgeInsets.symmetric(horizontal: 0.3),
+                            itemBuilder: (context, _) => Icon(
+                              Icons.star,
+                              size: 10,
+                              color: Colors.amber,
+                            ),
+                            onRatingUpdate: (rating) {
+                              print(rating);
+                            },
+                          )
                         ],
                       ),
                     )
