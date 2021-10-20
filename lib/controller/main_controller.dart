@@ -201,6 +201,7 @@ class MainController extends GetxController {
     var data = await HttpService.getHistory(
         _authController.user.token, _authController.user.uid);
     List listElement = data['data']['order_detail'];
+    print("v13nr = " + listElement.toString());
     List<History> result = [];
     for (var element in listElement) {
       var history = History.fromJson(element);

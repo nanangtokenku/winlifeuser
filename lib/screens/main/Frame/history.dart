@@ -233,7 +233,10 @@ class _FrameHistoryState extends State<FrameHistory> {
                       flex: 1,
                       child: FittedBox(
                         child: Text(
-                          data.jadwal_hari + ", " + data.jadwal_tanggal,
+                          data.jadwal_hari + ", " + data.tanggal_formated !=
+                                  null
+                              ? data.tanggal_formated
+                              : "",
                           textAlign: TextAlign.right,
                           style: TextStyle(
                               fontFamily: 'muli',
@@ -348,7 +351,7 @@ class _FrameHistoryState extends State<FrameHistory> {
                             height: 10,
                           ),
                           Text(
-                            "Tap History for summary",
+                            "",
                             textAlign: TextAlign.end,
                             overflow: TextOverflow.fade,
                             style: TextStyle(

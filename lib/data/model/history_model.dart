@@ -8,6 +8,7 @@ class History {
   String? nama_konselor;
   String jadwal_hari;
   String jadwal_tanggal;
+  String tanggal_formated;
   String sesi_id;
   String conselorId;
   String service_id;
@@ -25,6 +26,7 @@ class History {
       this.nama_konselor,
       this.jadwal_hari,
       this.jadwal_tanggal,
+      this.tanggal_formated,
       this.sesi_id,
       this.conselorId,
       this.service_id);
@@ -37,6 +39,7 @@ class History {
         json['nama_konselor'],
         json['jadwal_hari'],
         json['jadwal_tanggal'],
+        json['tanggal_formated'],
         json['sesi_id'],
         json['konselor_id'],
         json['service_id']);
