@@ -108,7 +108,7 @@ class _RatingConselorState extends State<RatingConselor> {
                                             conselor!.conselorDetail != null
                                                 ? conselor!.conselorDetail!
                                                     .foto_konselor
-                                                : "http://web-backend.winlife.id:80/uploads/konselor/20210905203938-2021-09-05konselor203931.jpg",
+                                                : "https://web-backend.winlife.id/logo_winlife.png",
                                             fit: BoxFit.cover,
                                           )),
                                     ),

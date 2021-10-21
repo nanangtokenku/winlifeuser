@@ -46,8 +46,8 @@ class _ListConselorState extends State<ListConselor> {
     final newItems =
         await _mainController.getConselorPagging(_pageSize, pageKey);
     isLastPage.value = newItems.length < _pageSize;
-    print(isLastPage);
-    print(pageKey);
+    print("last page = " + isLastPage.toString());
+    print("page key " + pageKey.toString());
     if (isLastPage.value) {
       this.pageKey.value = 9900099;
       dataConselor.addAll(newItems);
@@ -168,6 +168,8 @@ class _ListConselorState extends State<ListConselor> {
                                 controller: _scrollController,
                                 itemBuilder: (contex, index) {
                                   if (index < dataConselor.length) {
+                                    //print("v23 data c " +
+                                    // dataConselor[index].toString());
                                     return exploreview(
                                         context, dataConselor[index]!);
                                   } else {
@@ -289,9 +291,17 @@ class _ListConselorState extends State<ListConselor> {
                                         Map snap = snapshot.data!.data() as Map;
                                         if (snap['isActive'] != null) {
                                           data.isActive = snap['isActive'];
+                                          print("v23 is aktif  = " +
+                                              data.name +
+                                              "=" +
+                                              data.isActive.toString());
                                         }
                                         if (snap['inOrder'] != null) {
                                           data.inOrder = snap['inOrder'];
+                                          print("v23 in order = " +
+                                              data.name +
+                                              "=" +
+                                              data.inOrder.toString());
                                         }
                                         data.lastActive = snap['lastActive'];
                                       }
