@@ -32,16 +32,32 @@ class _ListConselorState extends State<ListConselor> {
         nama.toString() +
         "=>" +
         status.toString());
+
+    //makeRequest(tipe, nama.toString(), status.toString());
+
+    final response = await http.post(
+        Uri.parse('https://web-backend.winlife.id/' + "/ajax/setLog.php"),
+        body: <String, String>{
+          'tipe': tipe,
+          'nama': nama,
+          'status': status.toString()
+        });
   }
 
-  void makeRequest() async {
-    var response = await http
-        .get(Uri.https('https://web-backend.winlife.id/', 'ajax/setLog.php'));
+  void makeRequest(tipe, nama, status) async {
+    var response = await http.get(Uri.https(
+        'https://web-backend.winlife.id/',
+        'ajax/setLog.php?tipe=' +
+            tipe +
+            "&nama=" +
+            nama.toString() +
+            "&status=" +
+            status.toString()));
     //If the http request is successful the statusCode will be 200
-    if (response.statusCode == 200) {
-      String htmlToParse = response.body;
-      print(htmlToParse);
-    }
+    //if (response.statusCode == 200) {
+    //String htmlToParse = response.body;
+    //print(htmlToParse);
+    //}
   }
 
   Future<void> _refresh() async {
