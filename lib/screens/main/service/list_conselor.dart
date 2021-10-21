@@ -1,5 +1,5 @@
 import 'dart:async';
-
+import 'package:http/http.dart' as http;
 import 'package:animations/animations.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +24,25 @@ class _ListConselorState extends State<ListConselor> {
   bool loaded = false;
 
   var _searchConselor = "".obs;
+
+  sendLogKonselor(tipe, nama, status) async {
+    print("v23 konselor status  = " +
+        tipe +
+        "=>" +
+        nama.toString() +
+        "=>" +
+        status.toString());
+  }
+
+  void makeRequest() async {
+    var response = await http
+        .get(Uri.https('https://web-backend.winlife.id/', 'ajax/setLog.php'));
+    //If the http request is successful the statusCode will be 200
+    if (response.statusCode == 200) {
+      String htmlToParse = response.body;
+      print(htmlToParse);
+    }
+  }
 
   Future<void> _refresh() async {
     isLastPage.value = false;
@@ -291,17 +310,15 @@ class _ListConselorState extends State<ListConselor> {
                                         Map snap = snapshot.data!.data() as Map;
                                         if (snap['isActive'] != null) {
                                           data.isActive = snap['isActive'];
-                                          print("v23 is aktif  = " +
-                                              data.name +
-                                              "=" +
-                                              data.isActive.toString());
+
+                                          sendLogKonselor("isActive", data.name,
+                                              data.isActive);
                                         }
                                         if (snap['inOrder'] != null) {
                                           data.inOrder = snap['inOrder'];
-                                          print("v23 in order = " +
-                                              data.name +
-                                              "=" +
-                                              data.inOrder.toString());
+
+                                          sendLogKonselor("inOrder", data.name,
+                                              data.inOrder);
                                         }
                                         data.lastActive = snap['lastActive'];
                                       }
