@@ -293,12 +293,33 @@ class _FrameHistoryState extends State<FrameHistory> {
                                 "Problem".tr,
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
-                                    fontFamily: 'mulibold',
-                                    color: Colors.black87,
-                                    fontSize: 12),
+                                  fontFamily: 'neosansbold',
+                                  color: Colors.black87,
+                                ),
                               ),
                               Text(
                                 data.problem,
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                    fontFamily: 'muli',
+                                    color: Colors.black87,
+                                    fontSize: 12),
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              Text(
+                                "Summary",
+                                textAlign: TextAlign.left,
+                                style: TextStyle(
+                                  fontFamily: 'neosansbold',
+                                  color: Colors.black87,
+                                ),
+                              ),
+                              Text(
+                                data.summary != null
+                                    ? data.summary!
+                                    : "Menunggu Summary dari Konselor",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     fontFamily: 'muli',
