@@ -50,7 +50,7 @@ class _ListVoucherState extends State<ListVoucher> {
                           size: 20,
                           color: Colors.black,
                         ),
-                        hintText: "Masukan kode voucher",
+                        hintText: "Masukan kode voucher..",
                         border: InputBorder.none),
                     onChanged: (value) {
                       _searchConselor.value = value;
@@ -72,8 +72,23 @@ class _ListVoucherState extends State<ListVoucher> {
                               padding: EdgeInsets.all(12),
                               child: Card(
                                 child: ListTile(
-                                  title: Text(_mainController
-                                      .listVoucher[i]!.promoCode),
+                                  title: Container(
+                                    height: 30,
+                                    decoration: BoxDecoration(
+                                        color: Colors.green[700],
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(0),
+                                            topRight: Radius.circular(0))),
+                                    child: Container(
+                                      margin: const EdgeInsets.only(top: 5.0),
+                                      child: Text(
+                                          ("   " +
+                                              _mainController
+                                                  .listVoucher[i]!.promoCode),
+                                          style: TextStyle(color: Colors.white),
+                                          textDirection: TextDirection.ltr),
+                                    ),
+                                  ),
                                   subtitle: Padding(
                                     padding: const EdgeInsets.only(left: 16),
                                     child: Column(

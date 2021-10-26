@@ -223,7 +223,7 @@ class _DetailOrderState extends State<DetailOrder> {
                 }),
 
                 SizedBox(
-                  height: 50,
+                  height: 20,
                 ),
                 InkWell(
                   onTap: () {
@@ -245,7 +245,7 @@ class _DetailOrderState extends State<DetailOrder> {
                     });
                   },
                   child: Container(
-                      margin: const EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 1),
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
                           color: Colors.grey[200],
@@ -271,7 +271,7 @@ class _DetailOrderState extends State<DetailOrder> {
                                     );
                                   } else {
                                     return Text(
-                                      "Voucher",
+                                      "Input Kode Promo",
                                       style: TextStyle(
                                           fontFamily: 'neosans', fontSize: 16),
                                     );
@@ -307,6 +307,10 @@ class _DetailOrderState extends State<DetailOrder> {
                           }),
                         ],
                       )),
+                ),
+                SizedBox(
+                  width: 12,
+                  height: 10,
                 ),
                 Container(
                     margin: const EdgeInsets.only(top: 10),

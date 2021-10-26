@@ -18,6 +18,7 @@ class _FramePromoState extends State<FramePromo> {
 
   @override
   Widget build(BuildContext context) {
+    //print("hadiah");
     return Scaffold(
         backgroundColor: Colors.grey[50],
         appBar: AppBar(
@@ -50,7 +51,8 @@ class _FramePromoState extends State<FramePromo> {
                 } else {
                   return SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: 200,
+                    //height: 200,
+                    height: MediaQuery.of(context).size.height,
                     child: ListView.builder(
                         itemCount: _mainController.listReward.length,
                         itemBuilder: (c, i) => InkWell(
