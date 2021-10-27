@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:permission_handler/permission_handler.dart';
+
+import 'package:get_storage/get_storage.dart';
 import 'package:winlife/constant/request_permission.dart';
 import 'package:winlife/controller/auth_controller.dart';
 import 'package:winlife/data/model/banner_model.dart';
@@ -146,7 +148,9 @@ class MainController extends GetxController {
     var p = data['data']['point_records']['jumlah_total_point'];
     print("P= " + p.toString());
     if (p != null) {
+      final storage = GetStorage();
       point.value = p.toString();
+      await storage.write('poinku', point.value);
     }
   }
 

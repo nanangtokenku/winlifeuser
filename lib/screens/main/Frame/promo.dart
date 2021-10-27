@@ -16,7 +16,11 @@ class FramePromo extends StatefulWidget {
 }
 
 class _FramePromoState extends State<FramePromo> {
+  static get storage => null;
+
   Future<void> _refresh() async {}
+
+  var data = storage.read('poinku');
   int saldo = 45;
   MainController _mainController = Get.find();
   redeem(harga, modal, idhadiah) async {
