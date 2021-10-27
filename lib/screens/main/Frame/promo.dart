@@ -6,6 +6,8 @@ import 'package:winlife/controller/main_controller.dart';
 import 'package:winlife/data/model/reward_model.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'package:http/http.dart' as http;
+
 class FramePromo extends StatefulWidget {
   const FramePromo({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class _FramePromoState extends State<FramePromo> {
   Future<void> _refresh() async {}
   int saldo = 45;
   MainController _mainController = Get.find();
-  redeem(harga, modal) async {
+  redeem(harga, modal, idhadiah) async {
     var myIntharga = int.parse(harga);
     if (myIntharga > modal) {
       Get.defaultDialog(title: "Oops!", middleText: "Saldo Point tidak cukup.");
@@ -27,6 +29,10 @@ class _FramePromoState extends State<FramePromo> {
       var data = await storage.read('login');
       print("ini data");
       print(data['email']);
+
+      final response = await http.post(
+          Uri.parse('https://web-backend.winlife.id/' + "/ajax/setRedeem.php"),
+          body: <String, String>{'email': data['email'], 'idhadiah': idhadiah});
     }
     saldo = saldo - myIntharga;
   }
@@ -176,7 +182,8 @@ class _FramePromoState extends State<FramePromo> {
                                 child: InkWell(
                                   onTap: () {
                                     print("Clicked");
-                                    redeem(reward.jumlah_point!, saldo);
+                                    redeem(reward.jumlah_point!, saldo,
+                                        reward.id!);
                                   },
                                   child: Text(
                                     "I Want".tr,
