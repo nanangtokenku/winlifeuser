@@ -144,8 +144,9 @@ class MainController extends GetxController {
     var data = await HttpService.getPoint(
         _authController.user.token, _authController.user.uid);
     var p = data['data']['point_records']['jumlah_total_point'];
+    print("P= " + p.toString());
     if (p != null) {
-      point.value = p;
+      point.value = p.toString();
     }
   }
 
