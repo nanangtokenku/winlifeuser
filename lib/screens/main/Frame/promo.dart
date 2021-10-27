@@ -4,6 +4,7 @@ import 'package:winlife/constant/color.dart';
 import 'package:get/get.dart';
 import 'package:winlife/controller/main_controller.dart';
 import 'package:winlife/data/model/reward_model.dart';
+import 'package:get_storage/get_storage.dart';
 
 class FramePromo extends StatefulWidget {
   const FramePromo({Key? key}) : super(key: key);
@@ -16,12 +17,16 @@ class _FramePromoState extends State<FramePromo> {
   Future<void> _refresh() async {}
   int saldo = 45;
   MainController _mainController = Get.find();
-  redeem(harga, modal) {
+  redeem(harga, modal) async {
     var myIntharga = int.parse(harga);
     if (myIntharga > modal) {
       Get.defaultDialog(title: "Oops!", middleText: "Saldo Point tidak cukup.");
     } else {
+      final storage = GetStorage();
       Get.defaultDialog(title: "Ok!", middleText: "Saldo Point cukup.");
+      var data = await storage.read('login');
+      print("ini data");
+      print(data['email']);
     }
     saldo = saldo - myIntharga;
   }
