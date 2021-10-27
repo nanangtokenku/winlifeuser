@@ -14,6 +14,7 @@ class FramePromo extends StatefulWidget {
 
 class _FramePromoState extends State<FramePromo> {
   Future<void> _refresh() async {}
+  int saldo = 45;
   MainController _mainController = Get.find();
   redeem(harga, modal) {
     var myIntharga = int.parse(harga);
@@ -22,6 +23,7 @@ class _FramePromoState extends State<FramePromo> {
     } else {
       Get.defaultDialog(title: "Ok!", middleText: "Saldo Point cukup.");
     }
+    saldo = saldo - myIntharga;
   }
 
   @override
@@ -169,7 +171,7 @@ class _FramePromoState extends State<FramePromo> {
                                 child: InkWell(
                                   onTap: () {
                                     print("Clicked");
-                                    redeem(reward.jumlah_point!, 45);
+                                    redeem(reward.jumlah_point!, saldo);
                                   },
                                   child: Text(
                                     "I Want".tr,
