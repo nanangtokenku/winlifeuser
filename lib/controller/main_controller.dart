@@ -17,6 +17,7 @@ import 'package:winlife/data/model/reward_model.dart';
 import 'package:winlife/data/model/voucher_model.dart';
 import 'package:winlife/data/provider/http_service.dart';
 import 'package:winlife/data/provider/payment_gateway.dart';
+import 'package:winlife/poin.dart';
 
 class MainController extends GetxController {
   RxList<CategoryItem> listCategory = RxList<CategoryItem>();
@@ -146,11 +147,13 @@ class MainController extends GetxController {
     var data = await HttpService.getPoint(
         _authController.user.token, _authController.user.uid);
     var p = data['data']['point_records']['jumlah_total_point'];
-    print("P= " + p.toString());
+    print("P = " + p.toString());
     if (p != null) {
       final storage = GetStorage();
       point.value = p.toString();
-      await storage.write('poinku', point.value);
+      await storage.write('poinku', p.toString());
+
+      print("P == " + storage.read('poinku'));
     }
   }
 
