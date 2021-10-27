@@ -15,6 +15,14 @@ class FramePromo extends StatefulWidget {
 class _FramePromoState extends State<FramePromo> {
   Future<void> _refresh() async {}
   MainController _mainController = Get.find();
+  redeem(harga, modal) {
+    var myIntharga = int.parse(harga);
+    if (myIntharga > modal) {
+      Get.defaultDialog(title: "Oops!", middleText: "Saldo Point tidak cukup.");
+    } else {
+      Get.defaultDialog(title: "Ok!", middleText: "Saldo Point cukup.");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -120,7 +128,7 @@ class _FramePromoState extends State<FramePromo> {
                           ),
                         ),
                         Text(
-                          "valid",
+                          reward.jumlah_point! + " Point, valid until ",
                           textAlign: TextAlign.left,
                           style: TextStyle(
                               fontFamily: 'muli',
@@ -161,9 +169,7 @@ class _FramePromoState extends State<FramePromo> {
                                 child: InkWell(
                                   onTap: () {
                                     print("Clicked");
-                                    Get.defaultDialog(
-                                        title: "Oops!",
-                                        middleText: "Saldo Point tidak cukup.");
+                                    redeem(reward.jumlah_point!, 45);
                                   },
                                   child: Text(
                                     "I Want".tr,
