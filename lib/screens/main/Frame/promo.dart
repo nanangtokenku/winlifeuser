@@ -158,13 +158,21 @@ class _FramePromoState extends State<FramePromo> {
                           child: Row(
                             children: [
                               Expanded(
-                                child: Text(
-                                  "I Want".tr,
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontFamily: 'neosansbold',
-                                      fontSize: 14,
-                                      color: Colors.white),
+                                child: InkWell(
+                                  onTap: () {
+                                    print("Clicked");
+                                    Get.defaultDialog(
+                                        title: "Oops!",
+                                        middleText: "Saldo Point tidak cukup.");
+                                  },
+                                  child: Text(
+                                    "I Want".tr,
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                        fontFamily: 'neosansbold',
+                                        fontSize: 14,
+                                        color: Colors.white),
+                                  ),
                                 ),
                               ),
                             ],
