@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/services.dart';
+import 'package:winlife/constant/color.dart';
 import 'package:winlife/screens/main/Frame/home/edit_fav.dart';
 import 'package:winlife/screens/main/dashboard.dart';
-
-import 'main/Frame/home/home.dart';
 
 class SuccesfulPurchase extends StatelessWidget {
   final String namaHadiah;
@@ -83,35 +82,47 @@ class SuccesfulPurchase extends StatelessWidget {
             ),
             SizedBox(height: 10),
             InkWell(
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => DashboardPage()));
-              },
-              child: Padding(
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => DashboardPage()));
+                },
+                child: Padding(
                   padding: const EdgeInsets.fromLTRB(50, 5, 50, 5),
-                  child: SizedBox(
-                      width: double.infinity,
-                      child: blueButton(
-                          "Go Home",
-                          () => {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => FrameHome())).then((_) {
-                                  // This block runs when you have come back to the 1st Page from 2nd.
-                                  setState(() {
-                                    // Call setState to refresh the page.
-                                  });
-                                })
-                              }))),
-            ),
+                  child: MaterialButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    ),
+                    elevation: 0.0,
+                    minWidth: 200.0,
+                    height: 40.0,
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => DashboardPage())).then((_) {
+                        // This block runs when you have come back to the 1st Page from 2nd.
+                        setState(() {
+                          // Call setState to refresh the page.
+                        });
+                      });
+                    },
+                    color: mainColor,
+                    child: Text('GO HOME',
+                        style: TextStyle(
+                            fontSize: 15,
+                            color: Colors.white,
+                            fontFamily: 'mulibold')),
+                  ),
+                )),
           ],
         ),
       ),
     );
   }
 
-  void setState(Null Function() param0) {}
+  void setState(Null Function() param0) {
+    //DashboardPage();
+  }
 }
 
 MaterialButton viewMoreButtons(String title, Function fun) {
