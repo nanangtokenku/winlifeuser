@@ -6,6 +6,8 @@ import 'package:flutter/services.dart';
 import 'package:winlife/screens/main/Frame/home/edit_fav.dart';
 import 'package:winlife/screens/main/dashboard.dart';
 
+import 'main/Frame/home/home.dart';
+
 class SuccesfulPurchase extends StatelessWidget {
   final String namaHadiah;
   const SuccesfulPurchase(this.namaHadiah);
@@ -95,7 +97,12 @@ class SuccesfulPurchase extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => DashboardPage()))
+                                        builder: (_) => FrameHome())).then((_) {
+                                  // This block runs when you have come back to the 1st Page from 2nd.
+                                  setState(() {
+                                    // Call setState to refresh the page.
+                                  });
+                                })
                               }))),
             ),
           ],
@@ -103,6 +110,8 @@ class SuccesfulPurchase extends StatelessWidget {
       ),
     );
   }
+
+  void setState(Null Function() param0) {}
 }
 
 MaterialButton viewMoreButtons(String title, Function fun) {
