@@ -7,6 +7,7 @@ import 'package:winlife/data/model/reward_model.dart';
 import 'package:get_storage/get_storage.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:winlife/screens/SuccesfulPurchase.dart';
 
 class FramePromo extends StatefulWidget {
   const FramePromo({Key? key}) : super(key: key);
@@ -27,13 +28,19 @@ class _FramePromoState extends State<FramePromo> {
   }
 
   MainController _mainController = Get.find();
-  redeem(harga, modal, idhadiah) async {
+  redeem(harga, modal, idhadiah, namaHadiah) async {
     var myIntharga = int.parse(harga);
     if (myIntharga > modal) {
       Get.defaultDialog(title: "Oops!", middleText: "Saldo Point tidak cukup.");
     } else {
       final storage = GetStorage();
-      Get.defaultDialog(title: "Ok!", middleText: "Saldo Point cukup.");
+      Get.defaultDialog(
+          title: "Ok!",
+          middleText: "Selamat Saldo Point cukup untuk mendapatkan Hadiah.");
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => SuccesfulPurchase(namaHadiah)));
       var data = await storage.read('login');
       print("ini data");
       print(data['email']);
@@ -191,7 +198,7 @@ class _FramePromoState extends State<FramePromo> {
                                   onTap: () {
                                     print("Clicked");
                                     redeem(reward.jumlah_point!, saldo,
-                                        reward.id!);
+                                        reward.id!, reward.nama_hadiah!);
                                   },
                                   child: Text(
                                     "I Want".tr,
