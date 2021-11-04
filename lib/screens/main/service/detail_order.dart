@@ -12,6 +12,7 @@ import 'package:winlife/data/model/category_model.dart';
 import 'package:winlife/data/model/conselor_model.dart';
 import 'package:winlife/data/model/duration_model.dart';
 import 'package:winlife/data/provider/FCM.dart';
+import 'package:winlife/helper/CurrencyFormat.dart';
 import 'package:winlife/routes/app_routes.dart';
 import 'package:winlife/screens/widget/dialog.dart';
 import 'package:winlife/screens/widget/loader_dialog.dart';
@@ -406,7 +407,10 @@ class _DetailOrderState extends State<DetailOrder> {
                               child: Obx(
                                 () {
                                   return Text(
-                                    _mainController.durationOrder.value!.harga,
+                                    CurrencyFormat.convertToIdr(
+                                        int.parse(_mainController
+                                            .durationOrder.value!.harga),
+                                        0),
                                     textAlign: TextAlign.right,
                                     style: TextStyle(
                                         fontFamily: 'muli', fontSize: 15),
