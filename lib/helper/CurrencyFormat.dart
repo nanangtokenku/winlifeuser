@@ -7,6 +7,6 @@ class CurrencyFormat {
       symbol: 'Rp ',
       decimalDigits: decimalDigit,
     );
-    return currencyFormatter.format(number);
+    return currencyFormatter.format(number) + ",-";
   }
 }
