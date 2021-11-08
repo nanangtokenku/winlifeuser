@@ -85,10 +85,10 @@ class _DetailOrderState extends State<DetailOrder> {
   @override
   Widget build(BuildContext context) {
     print(
-      "Select Time - ${(args['data'] as Conselor).name}",
+      "Nama - ${(args['data'] as Conselor).name}",
     );
     print(
-      "Select Time - ${(args['data'] as Conselor).id}",
+      "idKonselor - ${(args['data'] as Conselor).id}",
     );
     return Scaffold(
         backgroundColor: Colors.white,
