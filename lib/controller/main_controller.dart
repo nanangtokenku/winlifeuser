@@ -137,7 +137,7 @@ class MainController extends GetxController {
   Future<void> getAllDuration() async {
     var data = await HttpService.getAllDuration(_authController.user.token);
     listDuration.clear();
-    print(data);
+    //print("v13nr data duration services = " + data.toString());
     data['data']['duration_service'].forEach((element) {
       listDuration.add(DurationItem.fromJson(element));
     });

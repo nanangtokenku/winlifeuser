@@ -61,6 +61,7 @@ class _DetailOrderState extends State<DetailOrder> {
           data[selected.value].kategori,
           data[selected.value].tipe,
           data[selected.value].tipeName);
+      print("id service duration = " + data[selected.value].id);
     } else {
       _mainController.durationOrder.value =
           DurationItem("", "", "", "", "", "", "");
@@ -83,6 +84,12 @@ class _DetailOrderState extends State<DetailOrder> {
   // ===========================VIEW===================================================================================================
   @override
   Widget build(BuildContext context) {
+    print(
+      "Select Time - ${(args['data'] as Conselor).name}",
+    );
+    print(
+      "Select Time - ${(args['data'] as Conselor).id}",
+    );
     return Scaffold(
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
